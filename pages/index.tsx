@@ -31,14 +31,18 @@ export default function Home() {
             </Head>
             <main className={styles.main}>
                 <section className={styles.thumnnailContainer}>
-                    {images.map((image: Image) => (
-                        <img
-                            key={image.id}
-                            src={image.thumbnailUrl}
-                            alt={image.title}
-                            onClick={() => setSelectedImage(image)}
-                        />
-                    ))}
+                    {images.map((image: Image) => {
+                        const className = `${image === selectedImage ? styles.selected : ""}`;
+                        return (
+                            <img
+                                key={image.id}
+                                src={image.thumbnailUrl}
+                                alt={image.title}
+                                onClick={() => setSelectedImage(image)}
+                                className={className}
+                            />
+                        );
+                    })}
                 </section>
                 <section className={styles.selectedContainer}>
                     {selectedImage ? (
